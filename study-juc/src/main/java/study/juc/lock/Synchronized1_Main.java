@@ -2,7 +2,7 @@ package study.juc.lock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import study.Sleeps;
+import study.juc.Sleeps;
 
 /**
  * 演示：synchronized访问互斥（资源同步、锁）

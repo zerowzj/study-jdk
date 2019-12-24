@@ -1,7 +1,7 @@
 package study.juc.thread;
 
 import lombok.extern.slf4j.Slf4j;
-import study.Sleeps;
+import study.juc.Sleeps;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;

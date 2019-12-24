@@ -1,4 +1,4 @@
-package study;
+package study.juc;
 
 import java.util.concurrent.ThreadLocalRandom;
 

@@ -2,7 +2,7 @@ package study.juc.thread;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import study.Sleeps;
+import study.juc.Sleeps;
 
 /**
  * 演示：wait()与sleep()区别，两者都释放cpu；前者释放锁，后者不释放锁

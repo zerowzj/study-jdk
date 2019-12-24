@@ -2,8 +2,8 @@ package study.juc.lock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import study.Randoms;
-import study.Sleeps;
+import study.juc.Randoms;
+import study.juc.Sleeps;
 
 /**
  * 演示：发生异常JVM会让线程自动释放锁

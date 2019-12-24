@@ -1,6 +1,6 @@
 package study.juc.thread;
 
-import study.Sleeps;
+import study.juc.Sleeps;
 
 /**
  * 演示：线程状态BLOCKED
@@ -36,7 +36,7 @@ public class State4_Main {
  *         at java.lang.Thread.sleep(Native Method)
  *         at java.lang.Thread.sleep(Thread.java:340)
  *         at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:386)
- *         at study.Sleeps.seconds(Sleeps.java:9)
+ *         at study.juc.Sleeps.seconds(Sleeps.java:9)
  *         at study.jdk.juc.thread.State4_Main.lambda$main$0(State4_Main.java:14)
  *         - locked <0x00000000d7149500> (a java.lang.Object)
  *         at study.jdk.juc.thread.State4_Main$$Lambda$1/1607521710.run(Unknown Source)

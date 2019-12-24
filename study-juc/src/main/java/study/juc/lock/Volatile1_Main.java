@@ -2,7 +2,7 @@ package study.juc.lock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import study.Sleeps;
+import study.juc.Sleeps;
 
 /**
  * 演示：volatile保证可见性，不保证原子性、顺序性

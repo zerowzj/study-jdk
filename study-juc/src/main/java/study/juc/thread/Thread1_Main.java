@@ -2,7 +2,7 @@ package study.juc.thread;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import study.Sleeps;
+import study.juc.Sleeps;
 
 /**
  * 演示：多任务（异步、并发）

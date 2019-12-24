@@ -1,6 +1,6 @@
 package study.juc.thread;
 
-import study.Sleeps;
+import study.juc.Sleeps;
 
 /**
  * 演示：
@@ -30,7 +30,7 @@ public class State2_Main {
  *         at java.lang.Thread.sleep(Native Method)
  *         at java.lang.Thread.sleep(Thread.java:340)
  *         at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:386)
- *         at study.Sleeps.seconds(Sleeps.java:9)
+ *         at study.juc.Sleeps.seconds(Sleeps.java:9)
  *         at study.jdk.juc.thread.State2_Main.lambda$main$0(State2_Main.java:13)
  *         at study.jdk.juc.thread.State2_Main$$Lambda$1/764977973.run(Unknown Source)
  *         at java.lang.Thread.run(Thread.java:745)

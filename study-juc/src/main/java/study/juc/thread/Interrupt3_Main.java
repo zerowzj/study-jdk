@@ -2,7 +2,7 @@ package study.juc.thread;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import study.Sleeps;
+import study.juc.Sleeps;
 
 import java.util.concurrent.TimeUnit;
 

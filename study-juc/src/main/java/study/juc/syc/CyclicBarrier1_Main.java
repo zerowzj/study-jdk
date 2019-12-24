@@ -2,8 +2,8 @@ package study.juc.syc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import study.Randoms;
-import study.Sleeps;
+import study.juc.Randoms;
+import study.juc.Sleeps;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;

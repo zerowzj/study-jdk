@@ -2,7 +2,7 @@ package study.juc.lock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import study.Sleeps;
+import study.juc.Sleeps;
 
 /**
  * （1）线程对象作为锁
