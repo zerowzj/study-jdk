@@ -6,6 +6,7 @@
     <groupId>study.java</groupId>
     <artifactId>study-dyproxy</artifactId>
     <version>1.0</version>
+    <description>Java动态代理</description>
 
     <dependencies>
         <!--（★）Cglib -->

@@ -6,7 +6,8 @@
     <groupId>study.java</groupId>
     <artifactId>study-reflect</artifactId>
     <version>1.0</version>
-    
+    <description>Java反射</description>
+
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
