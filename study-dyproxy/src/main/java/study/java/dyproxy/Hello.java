@@ -1,4 +1,4 @@
-package study.java.dyproxy.demo;
+package study.java.dyproxy;
 
 public interface Hello {
 

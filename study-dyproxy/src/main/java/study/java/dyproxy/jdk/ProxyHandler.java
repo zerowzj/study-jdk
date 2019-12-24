@@ -1,4 +1,4 @@
-package study.java.dyproxy;
+package study.java.dyproxy.jdk;
 
 import lombok.extern.slf4j.Slf4j;
 
