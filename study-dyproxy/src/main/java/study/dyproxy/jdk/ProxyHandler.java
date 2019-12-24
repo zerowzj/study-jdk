@@ -15,9 +15,9 @@ public class ProxyHandler implements InvocationHandler {
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        log.info("Before invoke " + method.getName());
+        log.info("before invoke " + method.getName());
         method.invoke(obj, args);
-        log.info("After invoke " + method.getName());
+        log.info("after invoke " + method.getName());
         return null;
     }
 }

@@ -13,5 +13,6 @@ public class DemoMain {
         InvocationHandler handler = new ProxyHandler(hello);
         Hello proxyHello = (Hello) Proxy.newProxyInstance(hello.getClass().getClassLoader(), hello.getClass().getInterfaces(), handler);
         proxyHello.sayHi("wangzhj");
+        proxyHello.sayBye("wangzhj");
     }
 }
