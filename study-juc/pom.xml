@@ -6,6 +6,7 @@
     <groupId>study.java</groupId>
     <artifactId>study-juc</artifactId>
     <version>1.0</version>
+    <description>Java并发框架</description>
 
     <dependencies>
         <dependency>

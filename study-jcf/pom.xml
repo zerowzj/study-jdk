@@ -6,6 +6,7 @@
     <groupId>study.java</groupId>
     <artifactId>study-jcf</artifactId>
     <version>1.0</version>
+    <description>Java集合框架</description>
 
     <dependencies>
         <dependency>
