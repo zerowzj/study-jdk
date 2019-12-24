@@ -1,7 +1,7 @@
-package study.java.dyproxy.jdk;
+package study.dyproxy.jdk;
 
-import study.java.dyproxy.Hello;
-import study.java.dyproxy.HelloImpl;
+import study.dyproxy.Hello;
+import study.dyproxy.HelloImpl;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
