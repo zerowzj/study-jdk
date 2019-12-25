@@ -1,5 +1,6 @@
-package study.juc.lock;
+package study.juc.synchronized_;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import study.juc.Randoms;
@@ -8,26 +9,25 @@ import study.juc.Sleeps;
 /**
  * 演示：发生异常JVM会让线程自动释放锁
  */
+@Slf4j
 public class Synchronized3_Main {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Synchronized3_Main.class);
-
     private synchronized void a() {
-        LOGGER.info("i am thread jmap");
+        log.info("i am thread jmap");
         while (true) {
             int random = Randoms.nextInt(10);
 
             if (random == 6) {
-                LOGGER.info("random={}, throw exception", random);
+                log.info("random={}, throw exception", random);
                 throw new RuntimeException("sssssss");
             }
-            LOGGER.info("random={}, sleep 2s", random);
+            log.info("random={}, sleep 2s", random);
             Sleeps.seconds(2);
         }
     }
 
     private synchronized void b() {
-        LOGGER.info("i am thread t2");
+        log.info("i am thread t2");
     }
 
     private void test() {

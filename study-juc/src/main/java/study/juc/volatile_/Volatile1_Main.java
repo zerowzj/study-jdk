@@ -1,5 +1,6 @@
-package study.juc.lock;
+package study.juc.volatile_;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import study.juc.Sleeps;
@@ -7,9 +8,8 @@ import study.juc.Sleeps;
 /**
  * 演示：volatile保证可见性，不保证原子性、顺序性
  */
+@Slf4j
 public class Volatile1_Main {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(Volatile1_Main.class);
 
     class Task implements Runnable {
 
@@ -19,7 +19,7 @@ public class Volatile1_Main {
 
         @Override
         public void run() {
-            LOGGER.info("enter into task");
+            log.info("enter into task");
             while (running) {
                 //
 //                int a = 2;
@@ -30,11 +30,11 @@ public class Volatile1_Main {
                 Sleeps.seconds(1);
 //                LOGGER.info("i am print");
             }
-            LOGGER.info("task is stopped");
+            log.info("task is stopped");
         }
 
         public void stop() {
-            LOGGER.info("stop task");
+            log.info("stop task");
             running = false;
         }
     }

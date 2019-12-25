@@ -1,14 +1,14 @@
-package study.juc.lock;
+package study.juc.volatile_;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * 演示：volatile实现轻量级同步
  */
+@Slf4j
 public class Volatile2_Main {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(Volatile2_Main.class);
 
     private static int TIME = 5;
 
@@ -20,7 +20,7 @@ public class Volatile2_Main {
         @Override
         public void run() {
             for (int i = 0; i < TIME; i++) {
-                LOGGER.info("当前计数：{}", ++count);
+                log.info("当前计数：{}", ++count);
             }
         }
     }

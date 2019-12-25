@@ -1,5 +1,6 @@
-package study.juc.lock;
+package study.juc.synchronized_;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import study.juc.Sleeps;
@@ -7,17 +8,16 @@ import study.juc.Sleeps;
 /**
  * 演示：synchronized访问互斥（资源同步、锁）
  */
+@Slf4j
 public class Synchronized1_Main {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Synchronized1_Main.class);
-
     synchronized void a() {
-        LOGGER.info("i am a()");
+        log.info("i am a()");
         Sleeps.seconds(10);
     }
 
     synchronized void b() {
-        LOGGER.info("i am b()");
+        log.info("i am b()");
     }
 
     void test() {

@@ -1,5 +1,6 @@
-package study.juc.lock;
+package study.juc.volatile_;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,9 +9,8 @@ import java.util.concurrent.CountDownLatch;
 /**
  * 演示：volatile无法保证原子性
  */
+@Slf4j
 public class Volatile5_Main {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(Volatile5_Main.class);
 
     private volatile int count = 0;
 
@@ -38,7 +38,7 @@ public class Volatile5_Main {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-        LOGGER.info("count= {}", count);
+        log.info("count= {}", count);
     }
 
     private void addCount() {

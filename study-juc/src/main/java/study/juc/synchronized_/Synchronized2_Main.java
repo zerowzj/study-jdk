@@ -1,5 +1,6 @@
-package study.juc.lock;
+package study.juc.synchronized_;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import study.juc.Sleeps;
@@ -7,22 +8,21 @@ import study.juc.Sleeps;
 /**
  * 演示：synchronized不可中断
  */
+@Slf4j
 public class Synchronized2_Main {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(Synchronized2_Main.class);
 
     private Object lock = new Object();
 
     void test() {
         Thread t1 = new Thread(() -> {
             synchronized (lock) {
-                LOGGER.info("i am thread jmap");
+                log.info("i am thread jmap");
                 Sleeps.seconds(20);
             }
         });
         Thread t2 = new Thread(() -> {
             synchronized (lock) {
-                LOGGER.info("i am thread t2");
+                log.info("i am thread t2");
             }
         });
         t1.start();
