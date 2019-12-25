@@ -1,4 +1,4 @@
-package study.juc.thread;
+package study.juc.thread.state;
 
 import study.juc.Sleeps;
 

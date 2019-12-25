@@ -1,4 +1,4 @@
-package study.juc.thread;
+package study.juc.thread.notify;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
