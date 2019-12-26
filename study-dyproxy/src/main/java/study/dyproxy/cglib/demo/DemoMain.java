@@ -1,7 +1,7 @@
 package study.dyproxy.cglib.demo;
 
+import net.sf.cglib.core.DebuggingClassWriter;
 import net.sf.cglib.proxy.Enhancer;
-import study.dyproxy.Hello;
 import study.dyproxy.HelloImpl;
 
 /**
@@ -11,7 +11,11 @@ import study.dyproxy.HelloImpl;
  */
 public class DemoMain {
 
+    private static final String PATH = "";
+
     public static void main(String[] args) {
+
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, PATH);
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(HelloImpl.class);
         enhancer.setCallback(new CglibProxyInterceptor());
