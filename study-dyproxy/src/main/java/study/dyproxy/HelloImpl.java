@@ -9,7 +9,7 @@ public class HelloImpl implements Hello {
         log.info("hi, {}", name);
     }
 
-    public void sayBye(String name) {
+    public final void sayBye(String name) {
         log.info("bye, {}", name);
     }
 }

@@ -1,6 +1,7 @@
 package study.dyproxy.cglib.demo;
 
 import net.sf.cglib.proxy.Enhancer;
+import study.dyproxy.Hello;
 import study.dyproxy.HelloImpl;
 
 public class DemoMain {
@@ -10,6 +11,7 @@ public class DemoMain {
         enhancer.setSuperclass(HelloImpl.class);
         enhancer.setCallback(new CglibProxyInterceptor());
         HelloImpl proxy = (HelloImpl) enhancer.create();
+        proxy.sayHi("sfsdfsd");
         proxy.sayBye("sfsdfsd");
     }
 }

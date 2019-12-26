@@ -1,4 +1,4 @@
-package study.dyproxy.jdk;
+package study.dyproxy.jdk.demo;
 
 import study.dyproxy.Hello;
 import study.dyproxy.HelloImpl;
