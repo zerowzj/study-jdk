@@ -1,4 +1,4 @@
-package study.dyproxy.cglib;
+package study.dyproxy.cglib.demo;
 
 import lombok.extern.slf4j.Slf4j;
 import net.sf.cglib.proxy.MethodInterceptor;
