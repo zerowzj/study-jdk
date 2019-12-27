@@ -1,8 +1,6 @@
 package study.juc.volatile_;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -10,13 +8,13 @@ import java.util.concurrent.CountDownLatch;
  * 演示：volatile无法保证原子性
  */
 @Slf4j
-public class Volatile5_Main {
+public class Volatile5Main {
 
     private volatile int count = 0;
 
     public static void main(String[] args) {
         for (int j = 0; j < 10; j++) {
-            new Volatile5_Main().show();
+            new Volatile5Main().show();
         }
     }
 

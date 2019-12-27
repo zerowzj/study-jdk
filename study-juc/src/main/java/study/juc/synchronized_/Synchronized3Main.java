@@ -1,8 +1,6 @@
 package study.juc.synchronized_;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import study.juc.Randoms;
 import study.juc.Sleeps;
 
@@ -10,7 +8,7 @@ import study.juc.Sleeps;
  * 演示：发生异常JVM会让线程自动释放锁
  */
 @Slf4j
-public class Synchronized3_Main {
+public class Synchronized3Main {
 
     private synchronized void a() {
         log.info("i am thread jmap");
@@ -45,6 +43,6 @@ public class Synchronized3_Main {
     }
 
     public static void main(String[] args) {
-        new Synchronized3_Main().test();
+        new Synchronized3Main().test();
     }
 }

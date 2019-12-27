@@ -1,21 +1,17 @@
 package study.juc.volatile_;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import study.juc.Sleeps;
 
 /**
  * 演示：volatile保证可见性，不保证原子性、顺序性
  */
 @Slf4j
-public class Volatile1_Main {
+public class Volatile1Main {
 
     class Task implements Runnable {
 
         private boolean running = true;
-
-        int m;
 
         @Override
         public void run() {
@@ -50,6 +46,6 @@ public class Volatile1_Main {
     }
 
     public static void main(String[] args) {
-        new Volatile1_Main().test();
+        new Volatile1Main().test();
     }
 }

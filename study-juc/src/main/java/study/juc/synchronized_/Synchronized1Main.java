@@ -1,15 +1,13 @@
 package study.juc.synchronized_;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import study.juc.Sleeps;
 
 /**
  * 演示：synchronized访问互斥（资源同步、锁）
  */
 @Slf4j
-public class Synchronized1_Main {
+public class Synchronized1Main {
 
     synchronized void a() {
         log.info("i am a()");
@@ -34,6 +32,6 @@ public class Synchronized1_Main {
     }
 
     public static void main(String[] args) {
-        new Synchronized1_Main().test();
+        new Synchronized1Main().test();
     }
 }
