@@ -8,6 +8,7 @@ public class FixedValueCallback implements FixedValue {
 
     @Override
     public Object loadObject() throws Exception {
-        return null;
+        log.info("this is fixvalue callback .....    overwrite the code....");
+        return true;
     }
 }
