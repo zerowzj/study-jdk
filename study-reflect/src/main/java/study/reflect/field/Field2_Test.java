@@ -2,6 +2,8 @@ package study.reflect.field;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import study.reflect.MyBean;
+import study.reflect.NotNull;
 
 import java.lang.reflect.Field;
 
@@ -9,20 +11,20 @@ import java.lang.reflect.Field;
 public class Field2_Test {
 
     @Test
-    public void isAccessible_test() throws Exception {
+    public void isAccessible_test() {
         Field field = null;
         boolean isAccessible = field.isAccessible();
         log.info("isAccessible={}", isAccessible);
     }
 
     @Test
-    public void isAnnotationPresent_test() throws Exception {
-        Field field = null;
-        boolean isAnnotationPresent = field.isAnnotationPresent(null);
-        log.info("isAnnotationPresent={}", isAnnotationPresent);
-    }
-
-    @Test
-    public void isSynthetic_test() throws Exception {
+    public void isAnnotationPresent_test() {
+        Field[] fields = MyBean.class.getDeclaredFields();
+        for (Field field : fields) {
+            boolean flag = field.isAnnotationPresent(NotNull.class);
+            if (flag) {
+                log.info("{}", field.getName());
+            }
+        }
     }
 }
