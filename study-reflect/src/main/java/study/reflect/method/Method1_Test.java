@@ -38,4 +38,12 @@ public class Method1_Test {
             }
         }
     }
+
+    @Test
+    public void getP1arameters_test() {
+        Method[] methods = MyBean.class.getDeclaredMethods();
+        for (Method method : methods) {
+            log.info("{}: ", method.getName());
+        }
+    }
 }
