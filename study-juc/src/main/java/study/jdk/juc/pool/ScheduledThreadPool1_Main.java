@@ -1,8 +1,8 @@
-package study.java.juc.pool;
+package study.jdk.juc.pool;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import study.java.juc.Sleeps;
+import study.jdk.juc.Sleeps;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
