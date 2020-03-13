@@ -3,6 +3,7 @@ package study.jdk8.stream.middle;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -25,8 +26,11 @@ public class FilterTest {
 
     @Test
     public void f_test(){
+        List<Integer> intLt = new ArrayList();
         Stream.of(1, 2, 3, 1, 2, 5, 6, 7, 8, 0, 0, 1, 2, 3, 1)
                 .filter(e -> e >= 5)
-                .forEach(e -> log.info("===>{}", e));
+                .forEach(e -> intLt.add(e));
+
+        log.info("{}", intLt);
     }
 }
