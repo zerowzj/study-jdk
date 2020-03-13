@@ -15,4 +15,16 @@ public class Middle_Operation_Test {
         data.stream()
                 .forEach(System.out::println);
     }
+
+    /**
+     * filter 方法用于通过设置的条件过滤出元素
+     */
+    @Test
+    public void filter_test() {
+        List<String> array = Arrays.asList("abc", "", "bc", "efg", "abcd", "", "jkl");
+        long count = array.stream()
+                .filter(str -> str.isEmpty())
+                .count();
+        log.info("count={}", count);
+    }
 }
