@@ -1,4 +1,4 @@
-package study.jdk8.stream;
+package study.jdk8.stream.middle;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
