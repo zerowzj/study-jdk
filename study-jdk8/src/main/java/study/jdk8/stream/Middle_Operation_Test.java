@@ -8,12 +8,26 @@ import java.util.List;
 
 @Slf4j
 public class Middle_Operation_Test {
-
     @Test
-    public void test() {
+    public void map_test() {
         List<String> data = Arrays.asList("123", "abc");
         data.stream()
                 .forEach(System.out::println);
+    }
+
+
+    @Test
+    public void flatmap_test() {
+        List<String> data = Arrays.asList("123", "abc");
+        data.stream()
+                .forEach(System.out::println);
+    }
+
+    public void limit_test() {
+
+    }
+
+    public void distint_test() {
     }
 
     /**
@@ -26,5 +40,14 @@ public class Middle_Operation_Test {
                 .filter(str -> str.isEmpty())
                 .count();
         log.info("count={}", count);
+    }
+
+    public void peek_test() {
+    }
+
+    public void skip_test() {
+    }
+
+    public void sorted_test() {
     }
 }
