@@ -10,7 +10,7 @@ import java.util.List;
 public class DistintTest {
 
     @Test
-    public void distint_test() {
+    public void test1() {
         List<String> array = Arrays.asList("abc", "abc", "abc", "efg", "abcd", "jkl");
         array.stream()
                 .distinct()
