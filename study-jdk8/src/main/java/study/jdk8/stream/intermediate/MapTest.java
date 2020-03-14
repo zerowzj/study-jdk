@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import study.jdk8.stream.Student;
+import study.jdk8.stream.User;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -42,6 +44,20 @@ public class MapTest {
 
     @Test
     public void test3() {
+        User u1 = new User("abc");
+        User u2 = new User("123");
+        List<User> userLt = Arrays.asList(u1, u2);
+        List<Student> stuLt = userLt.stream()
+                .map(user -> {
+                    Student stu = new Student(user.getCode());
+                    return stu;
+                })
+                .collect(Collectors.toList());
+        log.info("{}", stuLt);
+    }
+
+    @Test
+    public void test4() {
         User u1 = new User("123");
         User u2 = new User("abc");
         User u3 = new User("123");
@@ -57,33 +73,5 @@ public class MapTest {
                 .distinct()
                 .forEach(e -> log.info(e));
         log.info("{}", userMap);
-    }
-
-    @Test
-    public void test4() {
-        User u1 = new User("abc");
-        User u2 = new User("123");
-        List<User> userLt = Arrays.asList(u1, u2);
-        List<Student> stuLt = userLt.stream()
-                .map(user -> {
-                    Student stu = new Student(user.getCode());
-                    return stu;
-                })
-                .collect(Collectors.toList());
-        log.info("{}", stuLt);
-    }
-
-    @Data
-    @AllArgsConstructor
-    static class User {
-
-        private String code;
-    }
-
-    @Data
-    @AllArgsConstructor
-    static class Student {
-
-        private String code;
     }
 }
