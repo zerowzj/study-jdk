@@ -24,12 +24,24 @@ public class MapTest {
         List<Integer> lenLt = Stream.of("apple", "banana", "orange", "waltermaleon", "grape")
                 .map(e -> e.length())
                 .collect(Collectors.toList());
-
         log.info("{}", lenLt);
     }
 
     @Test
     public void test2() {
+        User u1 = new User("123");
+        User u2 = new User("abc");
+        User u3 = new User("123");
+        List<User> userLt = Arrays.asList(u1, u2, u3);
+        userLt.stream().map(User::getCode)
+                .distinct()
+                .forEach(e -> {
+                    log.info(e);
+                });
+    }
+
+    @Test
+    public void test3() {
         User u1 = new User("123");
         User u2 = new User("abc");
         User u3 = new User("123");
@@ -48,7 +60,7 @@ public class MapTest {
     }
 
     @Test
-    public void test3() {
+    public void test4() {
         User u1 = new User("abc");
         User u2 = new User("123");
         List<User> userLt = Arrays.asList(u1, u2);
