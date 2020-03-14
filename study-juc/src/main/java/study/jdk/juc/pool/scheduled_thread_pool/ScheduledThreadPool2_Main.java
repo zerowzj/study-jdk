@@ -1,4 +1,4 @@
-package study.jdk.juc.pool;
+package study.jdk.juc.pool.scheduled_thread_pool;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

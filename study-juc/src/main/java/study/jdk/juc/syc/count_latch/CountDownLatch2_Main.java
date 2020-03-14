@@ -1,5 +1,6 @@
-package study.jdk.juc.syc;
+package study.jdk.juc.syc.count_latch;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import study.jdk.juc.Sleeps;
@@ -10,6 +11,7 @@ import java.util.concurrent.CountDownLatch;
 /**
  * 演示：
  */
+@Slf4j
 public class CountDownLatch2_Main {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

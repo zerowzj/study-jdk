@@ -1,5 +1,6 @@
-package study.jdk.juc.syc;
+package study.jdk.juc.syc.count_latch;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import study.jdk.juc.Sleeps;
@@ -13,9 +14,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * 演示：
  */
+@Slf4j
 public class CountDownLatch3_Main {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     public static void main(String[] args) {
         ThreadPoolExecutor pool = new ThreadPoolExecutor(5, 10, 100, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(5));
@@ -30,7 +30,7 @@ public class CountDownLatch3_Main {
             latch.await();
         } catch (InterruptedException ex) {
         }
-        LOGGER.info("等待线程被唤醒！");
+        log.info("等待线程被唤醒！");
         pool.shutdown();
     }
 
@@ -47,7 +47,7 @@ public class CountDownLatch3_Main {
 
         @Override
         public void run() {
-            LOGGER.info("线程{}完成了操作", tid);
+            log.info("线程{}完成了操作", tid);
             Sleeps.seconds(4);
             latch.countDown();
         }
