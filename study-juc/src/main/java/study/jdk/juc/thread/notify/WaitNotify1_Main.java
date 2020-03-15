@@ -13,7 +13,7 @@ public class WaitNotify1_Main {
         Thread t1 = new Thread(() -> {
             synchronized (lock) {
                 log.info("A 1");
-                //TODO 等待
+                //（★）等待
                 try {
                     lock.wait();
                 } catch (InterruptedException ex) {
@@ -28,7 +28,7 @@ public class WaitNotify1_Main {
                 log.info("B 1");
                 log.info("B 2");
                 log.info("B 3");
-                //TODO 通知
+                //（★）通知
                 lock.notify();
             }
         }, "t2");
