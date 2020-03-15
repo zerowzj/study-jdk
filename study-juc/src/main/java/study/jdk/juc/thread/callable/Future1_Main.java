@@ -8,7 +8,7 @@ import java.util.concurrent.*;
  * 演示：返回值的异步执行
  */
 @Slf4j
-public class Callable2_Main {
+public class Future1_Main {
 
     public static void main(String[] args) {
         ExecutorService exec = Executors.newCachedThreadPool();
@@ -22,6 +22,9 @@ public class Callable2_Main {
             e1.printStackTrace();
         }
         System.out.println("主线程在执行任务");
+        while (!result.isDone()) {
+
+        }
         try {
             System.out.println("task运行结果" + result.get());
         } catch (InterruptedException e) {

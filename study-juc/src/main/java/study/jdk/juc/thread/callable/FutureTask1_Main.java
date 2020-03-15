@@ -8,7 +8,7 @@ import java.util.concurrent.*;
  * 演示：返回值的异步执行
  */
 @Slf4j
-public class Callable3_Main {
+public class FutureTask1_Main {
 
 
     public static void main(String[] args) {
