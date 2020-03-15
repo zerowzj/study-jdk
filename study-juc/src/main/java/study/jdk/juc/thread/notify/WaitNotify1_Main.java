@@ -4,6 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 等待/通知
+ * 如果需要获取执行结果，就必须通过共享变量或者使用线程通信的方式来达到效果
+ * 继承Thread和实现Runnable接口方式都有一个缺陷就是：在执行完任务之后无法获取执行结果
+ * 如果需要获取执行结果，就必须通过共享变量或者使用线程通信的方式来达到效果
  */
 @Slf4j
 public class WaitNotify1_Main {

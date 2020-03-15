@@ -12,7 +12,10 @@ import java.util.concurrent.FutureTask;
 @Slf4j
 public class Callable1_Main {
 
+    static int cnt = Runtime.getRuntime().availableProcessors();
+
     public static void main(String[] args) {
+        log.info("===>{}", cnt);
         long now = System.currentTimeMillis();
         FutureTask<Integer> task1 = new FutureTask(() -> {
             Sleeps.seconds(3);
@@ -30,6 +33,7 @@ public class Callable1_Main {
         t2.start();
 
         try {
+            //（★）get方法阻塞
             Integer sum = task1.get() + task2.get();
             log.info("sum= {}, cost_time= {} ms", sum, (System.currentTimeMillis() - now));
         } catch (InterruptedException | ExecutionException ex) {
