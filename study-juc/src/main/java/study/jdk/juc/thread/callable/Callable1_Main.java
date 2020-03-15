@@ -1,4 +1,4 @@
-package study.jdk.juc.thread;
+package study.jdk.juc.thread.callable;
 
 import lombok.extern.slf4j.Slf4j;
 import study.jdk.juc.Sleeps;
@@ -20,7 +20,7 @@ public class Callable1_Main {
             return 10;
         });
         FutureTask<Integer> task2 = new FutureTask(() -> {
-            Sleeps.seconds(5);
+            Sleeps.seconds(10);
             log.info("i am task2");
             return 21;
         });
