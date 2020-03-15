@@ -1,4 +1,4 @@
-package study.jdk.juc.syc;
+package study.jdk.juc.syc.semaphore;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

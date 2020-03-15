@@ -16,18 +16,16 @@ import java.util.concurrent.CountDownLatch;
 @Slf4j
 public class CountDownLatch1_Main {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-
     public static void main(String[] args) {
         CountDownLatch latch = new CountDownLatch(2);
         Thread t1 = new Thread(() -> {
             Sleeps.seconds(2);
-            LOGGER.info("i am jmap thread");
+            log.info("i am t1 thread");
             latch.countDown();
         });
         Thread t2 = new Thread(() -> {
             Sleeps.seconds(2);
-            LOGGER.info("i am t2 thread");
+            log.info("i am t2 thread");
             latch.countDown();
         });
         t1.start();
@@ -38,6 +36,6 @@ public class CountDownLatch1_Main {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-        LOGGER.info("i am main thread");
+        log.info("i am main thread");
     }
 }

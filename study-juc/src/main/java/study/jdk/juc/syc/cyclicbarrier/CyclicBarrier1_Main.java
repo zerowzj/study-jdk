@@ -1,4 +1,4 @@
-package study.jdk.juc.syc;
+package study.jdk.juc.syc.cyclicbarrier;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
