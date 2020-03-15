@@ -6,7 +6,8 @@ import study.jdk.juc.Randoms;
 import study.jdk.juc.Sleeps;
 
 /**
- * 演示：线程执行过程中异常未被捕获，线程停止运行；如果线程持有某个对象的监视器锁，会被立即释放
+ * 演示：线程执行过程中异常未被捕获，线程停止运行；
+ * 如果线程持有某个对象的监视器锁，会被立即释放
  */
 public class Exception1_Main {
 

@@ -1,4 +1,4 @@
-package study.jdk.juc.thread;
+package study.jdk.juc.thread.sleep;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

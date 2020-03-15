@@ -1,4 +1,4 @@
-package study.jdk.juc.thread;
+package study.jdk.juc.thread.daemon;
 
 import lombok.extern.slf4j.Slf4j;
 import study.jdk.juc.Sleeps;
