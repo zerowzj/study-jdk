@@ -18,9 +18,7 @@ public class ThreadPoolExecutor2_Main {
 
     private static final int TASK_NUM = 5;
 
-    /**
-     * 任务
-     */
+    //任务
     @Getter
     private class Task implements Runnable {
 
@@ -38,9 +36,7 @@ public class ThreadPoolExecutor2_Main {
         }
     }
 
-    /**
-     * 拒绝策略
-     */
+    //拒绝策略
     private class MyPolicy implements RejectedExecutionHandler {
 
         @Override
@@ -52,9 +48,6 @@ public class ThreadPoolExecutor2_Main {
         }
     }
 
-    /**
-     *
-     */
     private void demo() {
         int corePoolSize = 2;
         int maxPoolSize = 3;
@@ -62,8 +55,7 @@ public class ThreadPoolExecutor2_Main {
         RejectedExecutionHandler handler = new MyPolicy();
         ThreadPoolExecutor pool = new ThreadPoolExecutor(corePoolSize,
                 maxPoolSize,
-                0,
-                TimeUnit.SECONDS,
+                0, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(queueSize),
                 handler);
         for (int i = 0; i < TASK_NUM; i++) {
