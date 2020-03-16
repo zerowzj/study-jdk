@@ -43,19 +43,20 @@ public class ThreadPoolExecutor1_Main {
      *
      */
     private void demo() {
-        //（★）核心线程池数量
+        //（★）
+        //（1）核心线程池数量
         int corePoolSize = 2;
-        //（★）最大线程池数量
+        //（2）最大线程池数量
         int maximumPoolSize = 3;
-        //（★）线程池中超过corePoolSize数目的空闲线程最大存活时间
+        //（3）线程池中超过corePoolSize数目的空闲线程最大存活时间
         int keepAliveTime = 0;
-        //（★）阻塞任务队列
+        //（4）阻塞任务队列
         BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<>(4);
-        //（★）线程创建工厂
+        //（5）线程创建工厂
         ThreadFactory factory = new MyThreadFactory();
-        //（★）当提交任务数超过maximumPoolSize + workQueue之和时，任务会交给RejectedExecutionHandler来处理
+        //（6）当提交任务数超过maximumPoolSize + workQueue之和时，任务会交给RejectedExecutionHandler来处理
         RejectedExecutionHandler handler = new MyPolicy();
-
+        //（★）创建
         ThreadPoolExecutor pool = new ThreadPoolExecutor(corePoolSize,
                 maximumPoolSize,
                 keepAliveTime, TimeUnit.SECONDS,
@@ -65,6 +66,7 @@ public class ThreadPoolExecutor1_Main {
         log.info("i am main thread");
         for (int i = 0; i < TASK_NUM; i++) {
             int taskNo = i + 1;
+            //（★）执行
             pool.execute(() -> {
                 int random = 5;
                 log.info("i am task[{}], sleep {}s", taskNo, random);
@@ -72,6 +74,7 @@ public class ThreadPoolExecutor1_Main {
                 log.info("task[{}] end", taskNo);
             });
         }
+        //（★）关闭
         pool.shutdown();
         log.info("main thread end");
     }
