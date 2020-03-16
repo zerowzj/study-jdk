@@ -30,6 +30,7 @@ public class RunningRace_Main {
             } catch (InterruptedException ex) {
 
             } finally {
+                //准备完毕，举手示意
                 latch.countDown();
             }
         }
