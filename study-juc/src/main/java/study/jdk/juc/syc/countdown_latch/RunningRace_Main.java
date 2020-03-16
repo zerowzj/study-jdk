@@ -1,4 +1,4 @@
-package study.jdk.juc.syc.count_latch;
+package study.jdk.juc.syc.countdown_latch;
 
 import lombok.extern.slf4j.Slf4j;
 import study.jdk.juc.Randoms;

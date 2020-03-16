@@ -1,7 +1,6 @@
-package study.jdk.juc.syc.cyclicbarrier;
+package study.jdk.juc.syc.cyclic_barrier;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
@@ -9,16 +8,18 @@ import java.util.concurrent.CyclicBarrier;
 /**
  * 演示：
  */
-public class CyclicBarrier2_Main {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(CyclicBarrier2_Main.class);
+@Slf4j
+public class CyclicBarrier3_Main {
 
     public static void main(String[] args) {
-        CyclicBarrier barrier = new CyclicBarrier(2);
+        CyclicBarrier barrier = new CyclicBarrier(2, () -> {
+            log.info("i am barrierAction thread");
+        });
+
         Thread t = new Thread(() -> {
             try {
                 barrier.await();
-                LOGGER.info("i am t thread");
+                log.info("i am t thread");
             } catch (InterruptedException ex) {
             } catch (BrokenBarrierException ex) {
             }
@@ -30,6 +31,6 @@ public class CyclicBarrier2_Main {
         } catch (InterruptedException ex) {
         } catch (BrokenBarrierException ex) {
         }
-        LOGGER.info("i am main thread");
+        log.info("i am main thread");
     }
 }
