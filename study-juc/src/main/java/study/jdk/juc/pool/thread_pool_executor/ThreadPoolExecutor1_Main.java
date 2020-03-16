@@ -15,10 +15,8 @@ public class ThreadPoolExecutor1_Main {
 
     public static final int TASK_NUM = 10;
 
-    /**
-     * 线程工厂
-     */
-    private class MyThreadFactory implements ThreadFactory {
+    //线程工厂
+    class MyThreadFactory implements ThreadFactory {
 
         private AtomicInteger tNo = new AtomicInteger(1);
 
@@ -29,19 +27,14 @@ public class ThreadPoolExecutor1_Main {
         }
     }
 
-    /**
-     * 拒绝策略
-     */
-    private class MyPolicy implements RejectedExecutionHandler {
+    //拒绝策略
+    class MyPolicy implements RejectedExecutionHandler {
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
             log.info("discard");
         }
     }
 
-    /**
-     *
-     */
     private void demo() {
         //（★）
         //（1）核心线程池数量
