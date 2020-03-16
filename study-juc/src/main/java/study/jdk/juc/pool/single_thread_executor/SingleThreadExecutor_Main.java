@@ -1,5 +1,6 @@
 package study.jdk.juc.pool.single_thread_executor;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import study.jdk.juc.Sleeps;
@@ -14,9 +15,8 @@ import java.util.concurrent.Executors;
  * （3）线程和任务是2个概念，数量关系为M:N（线程数=任务数，线程数>任务数，线程数<任务数）
  * （4）线程池是个重量级的对象，尽量全局共享，使用完关闭
  */
+@Slf4j
 public class SingleThreadExecutor_Main {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(SingleThreadExecutor_Main.class);
 
     private static final int TASK_NUM = 5;
 
@@ -25,12 +25,16 @@ public class SingleThreadExecutor_Main {
         for (int i = 0; i < TASK_NUM; i++) {
             int taskNo = i + 1;
             pool.execute(() -> {
-                LOGGER.info("i am task[{}], sleep 2s", taskNo);
+                log.info("i am task[{}], sleep 2s", taskNo);
                 Sleeps.seconds(2);
             });
         }
-        LOGGER.info("i am main thread");
+        log.info("i am main thread");
         pool.shutdown();
-        LOGGER.info("main thread end");
+        log.info("main thread end");
+        Sleeps.seconds(20);
+        pool.execute(()-> {
+            log.info("dsfasd");
+        });
     }
 }
