@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
-public class RunningRace_Main {
+public class RunningRace {
 
     //选手
     static class Runner implements Runnable {
@@ -42,7 +42,6 @@ public class RunningRace_Main {
 
     private static final int LATCH_CNT = 5;
 
-
     public static void main(String[] args) {
         AtomicInteger counter = new AtomicInteger();
         ThreadPoolExecutor pool = new ThreadPoolExecutor(THREAD_SIZE,
@@ -64,14 +63,11 @@ public class RunningRace_Main {
 
         }
         log.info("裁判：比赛开始~~");
-
-
         try {
             TimeUnit.SECONDS.sleep(10);
         } catch (InterruptedException ex) {
 
         }
-
         pool.shutdownNow();
     }
 }

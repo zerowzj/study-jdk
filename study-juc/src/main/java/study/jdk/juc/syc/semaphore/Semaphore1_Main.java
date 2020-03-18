@@ -1,8 +1,6 @@
 package study.jdk.juc.syc.semaphore;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import study.jdk.juc.Sleeps;
 
 import java.util.ArrayList;
@@ -21,15 +19,14 @@ public class Semaphore1_Main {
     private static final int PERMITS = 1;
 
     public static void main(String[] args) {
-        //permits: 初始化可用的许可数目。
-        //fair: 若该信号量保证在征用时按FIFO的顺序授予许可，则为true，否则为false；
+        //（★-1）初始化
         Semaphore semaphore = new Semaphore(PERMITS);
         List<Thread> tLt = new ArrayList<>();
         for (int i = 0; i < T_NUM; i++) {
             final int index = i;
             Thread t = new Thread(() -> {
                 try {
-                    //获取1个许可
+                    //（★-2）获取许可
                     semaphore.acquire();
                     log.info("i am thread[{}]", index);
                     Sleeps.seconds(3);
@@ -37,6 +34,7 @@ public class Semaphore1_Main {
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 } finally {
+                    //（★-3）
                     semaphore.release();
                 }
             });
