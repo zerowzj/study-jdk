@@ -22,20 +22,34 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <archive>
-<!--                        <manifestFile>-->
-<!--                            src/main/resources/META-INF/MANIFEST.MF-->
-<!--                        </manifestFile>-->
-<!--                        <manifest>-->
-<!--                            <addClasspath>true</addClasspath>-->
-<!--                            <classpathPrefix>lib/</classpathPrefix>-->
-<!--                            <mainClass>study.jdk.agent.demo.AgentDemo</mainClass>-->
-<!--                        </manifest>-->
                         <manifestEntries>
                             <Premain-Class>study.jdk.agent.demo.AgentDemo</Premain-Class>
                             <Can-Redefine-Classes>true</Can-Redefine-Classes>
                         </manifestEntries>
                     </archive>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>sfsadf</finalName>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>study.jdk.app.AppMain</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
