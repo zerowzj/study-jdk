@@ -10,12 +10,13 @@ import java.util.concurrent.CountDownLatch;
  * countdown: 倒数计秒
  * latch: 闭锁
  * 演示：
+ * （1）
  */
 @Slf4j
 public class CountDownLatch1_Main {
 
     public static void main(String[] args) {
-        //（★）初始化
+        //（★-1）初始化
         CountDownLatch latch = new CountDownLatch(2);
         Thread t1 = new Thread(() -> {
             //业务逻辑
@@ -23,7 +24,7 @@ public class CountDownLatch1_Main {
             log.info("i am t1 thread, sleep {}s", sec);
             Sleeps.seconds(sec);
             log.info("i am t1 thread, finish");
-            //（★）倒数
+            //（★-2）倒数
             latch.countDown();
         });
         Thread t2 = new Thread(() -> {
@@ -38,7 +39,7 @@ public class CountDownLatch1_Main {
         t2.start();
 
         try {
-            //（★）集合点
+            //（★-3）集合点
             latch.await();
         } catch (InterruptedException ex) {
             ex.printStackTrace();
