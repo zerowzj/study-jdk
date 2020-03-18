@@ -27,7 +27,7 @@ public class CyclicBarrier1_Main {
                 log.info("i am t1 thread, finish");
                 //（★-2）
                 barrier.await();
-                log.info("i am t1 thread");
+                log.info("t1 after await()...");
             } catch (InterruptedException ex) {
 
             } catch (BrokenBarrierException ex) {
@@ -42,7 +42,7 @@ public class CyclicBarrier1_Main {
                 log.info("i am t2 thread, finish");
 
                 barrier.await();
-                log.info("i am t2 thread");
+                log.info("t2 after await()...");
             } catch (InterruptedException ex) {
 
             } catch (BrokenBarrierException ex) {
