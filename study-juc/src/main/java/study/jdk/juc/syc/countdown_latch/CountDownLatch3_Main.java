@@ -3,10 +3,7 @@ package study.jdk.juc.syc.countdown_latch;
 import lombok.extern.slf4j.Slf4j;
 import study.jdk.juc.Sleeps;
 
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 演示：
@@ -15,38 +12,47 @@ import java.util.concurrent.TimeUnit;
 public class CountDownLatch3_Main {
 
     public static void main(String[] args) {
-        ThreadPoolExecutor pool = new ThreadPoolExecutor(5, 10, 100, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(5));
-        int count = 10;
-        final CountDownLatch latch = new CountDownLatch(count);
+        CountDownLatch countDown = new CountDownLatch(1);
+        CountDownLatch await = new CountDownLatch(5);
 
-        for (int i = 0; i < count; i++) {
-            pool.execute(new Task(latch, i));
+        for (int i = 0; i < 5; ++i) {
+            new Thread(new Task(countDown, await))
+                    .start();
         }
-
+        log.info("用于触发处于等待状态的线程开始工作");
+        log.info("用于触发处于等待状态的线程工作完成，等待状态线程开始工作");
+        Sleeps.seconds(4);
+        countDown.countDown();
         try {
-            latch.await();
-        } catch (InterruptedException ex) {
+            await.await();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-        log.info("等待线程被唤醒！");
-        pool.shutdown();
+        log.info("Bingo!");
     }
 
-    private static class Task implements Runnable {
+    static class Task implements Runnable {
 
-        private final CountDownLatch latch;
+        private final CountDownLatch countDown;
 
-        private final int tid;
+        private final CountDownLatch await;
 
-        public Task(CountDownLatch latch, int tid) {
-            this.latch = latch;
-            this.tid = tid;
+        public Task(CountDownLatch countDown, CountDownLatch await) {
+            this.countDown = countDown;
+            this.await = await;
         }
 
         @Override
         public void run() {
-            log.info("线程{}完成了操作", tid);
-            Sleeps.seconds(4);
-            latch.countDown();
+            try {
+                //TODO 线程启动后需等待countDown.countDown()执行后运行下面代码
+                countDown.await();// 等待主线程执行完毕，获得开始执行信号
+
+                log.info("处于等待的线程开始自己预期工作");
+                await.countDown(); //完成预期工作，发出完成信号
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 }

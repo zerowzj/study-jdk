@@ -4,54 +4,51 @@ import lombok.extern.slf4j.Slf4j;
 import study.jdk.juc.Sleeps;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 演示：
+ * （1）任务持有latch引用进行倒数
  */
 @Slf4j
 public class CountDownLatch2_Main {
 
     public static void main(String[] args) {
-        CountDownLatch countDown = new CountDownLatch(1);
-        CountDownLatch await = new CountDownLatch(5);
+        ExecutorService pool = Executors.newFixedThreadPool(5);
+        int count = 10;
+        //（★-1）
+        final CountDownLatch latch = new CountDownLatch(count);
+        for (int i = 0; i < count; i++) {
+            pool.execute(new CountDownLatch2_Main().new Task(latch, i));
+        }
 
-        for (int i = 0; i < 5; ++i) {
-            new Thread(new Task(countDown, await)).start();
-        }
-        log.info("用于触发处于等待状态的线程开始工作");
-        log.info("用于触发处于等待状态的线程工作完成，等待状态线程开始工作");
-        Sleeps.seconds(4);
-        countDown.countDown();
         try {
-            await.await();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            //（★）
+            latch.await();
+        } catch (InterruptedException ex) {
         }
-        log.info("Bingo!");
+        log.info("等待线程被唤醒！");
+        pool.shutdown();
     }
 
-    private static class Task implements Runnable {
+    class Task implements Runnable {
 
-        private final CountDownLatch countDown;
+        private final CountDownLatch latch;
 
-        private final CountDownLatch await;
+        private final int tid;
 
-        public Task(CountDownLatch countDown, CountDownLatch await) {
-            this.countDown = countDown;
-            this.await = await;
+        public Task(CountDownLatch latch, int tid) {
+            this.latch = latch;
+            this.tid = tid;
         }
 
         @Override
         public void run() {
-            try {
-                //TODO 线程启动后需等待countDown.countDown()执行后运行下面代码
-                countDown.await();// 等待主线程执行完毕，获得开始执行信号
-
-                log.info("处于等待的线程开始自己预期工作");
-                await.countDown(); //完成预期工作，发出完成信号
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
+            log.info("线程{}完成了操作", tid);
+            Sleeps.seconds(4);
+            //（★）
+            latch.countDown();
         }
     }
 }
