@@ -25,48 +25,53 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
+                <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.1</version>
                 <executions>
                     <execution>
-                        <id>make-agent</id>
-                        <phase>package</phase>
+                        <id>server</id>
                         <goals>
-                            <goal>single</goal>
+                            <goal>jar</goal>
                         </goals>
+                        <phase>package</phase>
                         <configuration>
-                            <finalName>agent</finalName>
+                            <finalName>study</finalName>
+                            <classifier>agent</classifier>
+                            <includes>
+                                <include>study/jdk/agent/**</include>
+                            </includes>
                             <archive>
                                 <manifestEntries>
                                     <Premain-Class>study.jdk.agent.demo.AgentDemo</Premain-Class>
                                     <Can-Redefine-Classes>true</Can-Redefine-Classes>
                                 </manifestEntries>
                             </archive>
-                            <descriptors>
-                                <descriptor>src/main/assembly/agent-assembly.xml</descriptor>
-                            </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-app</id>
-                        <phase>package</phase>
+                        <id>client</id>
                         <goals>
-                            <goal>single</goal>
+                            <goal>jar</goal>
                         </goals>
+                        <phase>package</phase>
                         <configuration>
-                            <finalName>app</finalName>
+                            <finalName>study</finalName>
+                            <classifier>app</classifier>
+                            <includes>
+                                <include>study/jdk/app/**</include>
+                            </includes>
                             <archive>
                                 <manifest>
+                                    <addClasspath>true</addClasspath>
+                                    <classpathPrefix>lib/</classpathPrefix>
                                     <mainClass>study.jdk.app.AppMain</mainClass>
                                 </manifest>
                             </archive>
-                            <descriptors>
-                                <descriptor>src/main/assembly/app-assembly.xml</descriptor>
-                            </descriptors>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 </project>
