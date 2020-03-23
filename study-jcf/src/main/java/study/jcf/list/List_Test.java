@@ -8,10 +8,10 @@ import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
-public class ToList_Test {
+public class List_Test {
 
     @Test
-    public void test() {
+    public void asList_test() {
         String[] array = {"Apple", "Banana", "Orange"};
         List<String> list = Arrays.asList(array);
         //asList()的返回对象是一个Arrays内部类，并没有实现集合的修改方法
