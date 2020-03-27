@@ -14,12 +14,10 @@ public class Test {
         //阻塞方式执行
         String execute = commandPhone.execute();
         log.info("execute=[{}]", execute);
-
         //异步非阻塞方式
         Future<String> queue = command.queue();
         String value = queue.get(200, TimeUnit.MILLISECONDS);
         log.info("value=[{}]", value);
-
 
         CommandUser commandUser = new CommandUser("张三");
         String name = commandUser.execute();

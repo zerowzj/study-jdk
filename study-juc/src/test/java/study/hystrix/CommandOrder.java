@@ -25,8 +25,7 @@ public class CommandOrder extends HystrixCommand<String> {
                 .andCommandPropertiesDefaults(
                         HystrixCommandProperties.Setter()
                                 .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD))
-        )
-        ;
+        ) ;
         this.orderName = orderName;
     }
 
