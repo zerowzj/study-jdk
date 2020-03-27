@@ -4,14 +4,11 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import study.jdk.juc.Sleeps;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * 演示：
- * （1）
+ * （1）线程池监控参数
  */
 @Slf4j
 public class ThreadPoolExecutor2_Main {
@@ -40,9 +37,7 @@ public class ThreadPoolExecutor2_Main {
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
             Task task = (Task) r;
-            log.info("===task[{}] rejected!===", task.getTaskNo());
-            log.info("active_cn={}, task_cnt={}, completed_task_cnt={}", executor.getActiveCount(), executor.getTaskCount(), executor.getCompletedTaskCount());
-            log.info("core_pool_size={}, max_pool_size={}, pool_size={}, largest_pool_size={}", executor.getCorePoolSize(), executor.getMaximumPoolSize(), executor.getPoolSize(), executor.getLargestPoolSize());
+            log.info("task[{}] rejected!!!", task.getTaskNo());
         }
     }
 
@@ -58,6 +53,14 @@ public class ThreadPoolExecutor2_Main {
                 0, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(queueSize),
                 handler);
+
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
+            log.info("====================");
+            log.info("active_cnt={}, task_cnt={}, completed_task_cnt={}", pool.getActiveCount(), pool.getTaskCount(), pool.getCompletedTaskCount());
+            log.info("core_pool_size={}, max_pool_size={}, pool_size={}, largest_pool_size={}", pool.getCorePoolSize(), pool.getMaximumPoolSize(), pool.getPoolSize(), pool.getLargestPoolSize());
+            log.info("====================");
+        }, 0, 5, TimeUnit.SECONDS);
+
         for (int i = 0; i < taskNum; i++) {
             int taskNo = i + 1;
             pool.execute(new Task(String.valueOf(taskNo)));
