@@ -10,13 +10,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 演示：拒绝策略
- * （1）默认使用 AbortPolicy 策略
+ * 演示：
+ * （1）
  */
 @Slf4j
 public class ThreadPoolExecutor2_Main {
-
-    private static final int TASK_NUM = 5;
 
     //任务
     @Getter
@@ -49,6 +47,8 @@ public class ThreadPoolExecutor2_Main {
     }
 
     private void demo() {
+        int taskNum = 10;
+
         int corePoolSize = 2;
         int maxPoolSize = 3;
         int queueSize = 4;
@@ -58,7 +58,7 @@ public class ThreadPoolExecutor2_Main {
                 0, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(queueSize),
                 handler);
-        for (int i = 0; i < TASK_NUM; i++) {
+        for (int i = 0; i < taskNum; i++) {
             int taskNo = i + 1;
             pool.execute(new Task(String.valueOf(taskNo)));
         }
