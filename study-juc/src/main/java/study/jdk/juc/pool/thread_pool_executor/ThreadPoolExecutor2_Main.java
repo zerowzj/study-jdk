@@ -18,6 +18,7 @@ public class ThreadPoolExecutor2_Main {
     static {
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
             log.info("====================");
+            log.info("");
             log.info("active_cnt={}, task_cnt={}, completed_task_cnt={}", pool.getActiveCount(), pool.getTaskCount(), pool.getCompletedTaskCount());
             log.info("core_pool_size={}, max_pool_size={}, pool_size={}, largest_pool_size={}", pool.getCorePoolSize(), pool.getMaximumPoolSize(), pool.getPoolSize(), pool.getLargestPoolSize());
             log.info("====================");
