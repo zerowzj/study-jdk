@@ -2,17 +2,27 @@ package study.jdk.juc.pool.thread_pool_executor;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
  * 演示
- * （1）线程池最大吞吐量：maxPoolSize + queueSize
+ * （1）
  * （2）
  */
 @Slf4j
 public class ThreadPoolExecutor3_Main {
+
+    //任务
+    private class Task implements Callable<String> {
+
+        @Override
+        public String call() throws Exception {
+            return null;
+        }
+    }
 
     private void demo() {
         int corePoolSize = 2;

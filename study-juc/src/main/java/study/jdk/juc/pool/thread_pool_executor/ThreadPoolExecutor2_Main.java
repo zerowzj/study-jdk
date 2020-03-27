@@ -13,6 +13,17 @@ import java.util.concurrent.*;
 @Slf4j
 public class ThreadPoolExecutor2_Main {
 
+    private static ThreadPoolExecutor pool;
+
+    static {
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
+            log.info("====================");
+            log.info("active_cnt={}, task_cnt={}, completed_task_cnt={}", pool.getActiveCount(), pool.getTaskCount(), pool.getCompletedTaskCount());
+            log.info("core_pool_size={}, max_pool_size={}, pool_size={}, largest_pool_size={}", pool.getCorePoolSize(), pool.getMaximumPoolSize(), pool.getPoolSize(), pool.getLargestPoolSize());
+            log.info("====================");
+        }, 0, 5, TimeUnit.SECONDS);
+    }
+
     //任务
     @Getter
     private class Task implements Runnable {
@@ -48,19 +59,11 @@ public class ThreadPoolExecutor2_Main {
         int maxPoolSize = 3;
         int queueSize = 4;
         RejectedExecutionHandler handler = new MyPolicy();
-        ThreadPoolExecutor pool = new ThreadPoolExecutor(corePoolSize,
+        pool = new ThreadPoolExecutor(corePoolSize,
                 maxPoolSize,
                 0, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(queueSize),
                 handler);
-
-        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
-            log.info("====================");
-            log.info("active_cnt={}, task_cnt={}, completed_task_cnt={}", pool.getActiveCount(), pool.getTaskCount(), pool.getCompletedTaskCount());
-            log.info("core_pool_size={}, max_pool_size={}, pool_size={}, largest_pool_size={}", pool.getCorePoolSize(), pool.getMaximumPoolSize(), pool.getPoolSize(), pool.getLargestPoolSize());
-            log.info("====================");
-        }, 0, 5, TimeUnit.SECONDS);
-
         for (int i = 0; i < taskNum; i++) {
             int taskNo = i + 1;
             pool.execute(new Task(String.valueOf(taskNo)));
